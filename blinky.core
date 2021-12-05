@@ -135,6 +135,10 @@ filesets:
     files:
       - go_board/pinout.pcf : {file_type : PCF}
       - go_board/blinky_go_board.v : {file_type : verilogSource}
+
+  hpcboard_xc6vlx365t:
+    files:
+      - hpcboard_xc6vlx365t/blinky.ucf: { file_type : UCF }
   
   ice40hx1k_evb:
     files: [ice40hx1k_evb/pinout.pcf : {file_type : PCF}]
@@ -611,6 +615,19 @@ targets:
         nextpnr_options : [--hx1k, --package, vq100]
         pnr : next
     toplevel : blinky_go_board
+
+  hpcboard_xc6vlx365t:
+    default_tool : ise
+    description: HPCBoards (aliexpress) Virtex 6 XC6VLX365T PCIe board
+    filesets : [rtl, hpcboard_xc6vlx365t]
+    parameters : [clk_freq_hz=100000000]
+    tools:
+      ise:
+        family  : Virtex6
+        device  : xc6vlx365t
+        package : ff1156
+        speed   : -1
+    toplevel : blinky
 
   ice40hx1k_evb:
     default_tool : icestorm

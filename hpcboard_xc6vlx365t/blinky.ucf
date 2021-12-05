@@ -1,0 +1,7 @@
+
+NET clk    LOC = H28 | TNM_NET = sys_clk_pin | IOSTANDARD = "LVCMOS25";
+
+NET clk TNM_NET = clk;
+TIMESPEC TS_USER_CLOCK = PERIOD clk 100000 kHz;
+
+NET q  LOC = AN18 | IOSTANDARD = "LVCMOS25";
